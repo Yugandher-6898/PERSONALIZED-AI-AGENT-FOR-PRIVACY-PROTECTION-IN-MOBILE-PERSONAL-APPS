@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberShield AI • Install Mobile App Guide</title>
+    <style>
+        :root {
+            --bg-color: #070b19;
+            --card-bg: rgba(14, 21, 44, 0.9);
+            --neon-cyan: #00f0ff;
+            --neon-green: #00ffa3;
+            --text-main: #f0f4fc;
+            --text-sub: #8898aa;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        body { background: var(--bg-color); color: var(--text-main); padding: 30px 20px; min-height: 100vh; }
+        .wrapper { max-width: 680px; margin: 0 auto; }
+        .header { text-align: center; margin-bottom: 25px; }
+        .header h1 { font-size: 26px; color: var(--neon-cyan); margin-bottom: 6px; }
+        .header p { color: var(--text-sub); font-size: 14px; }
+        .card { background: var(--card-bg); border: 1px solid rgba(0, 240, 255, 0.25); border-radius: 16px; padding: 24px; margin-bottom: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .qr-section { text-align: center; margin-bottom: 20px; }
+        .qr-box { display: inline-block; background: #fff; padding: 16px; border-radius: 12px; margin: 15px 0; }
+        .url-box { background: rgba(0,0,0,0.4); border: 1px solid var(--neon-cyan); border-radius: 8px; padding: 12px; font-family: monospace; font-size: 16px; color: var(--neon-green); word-break: break-all; margin: 12px 0; text-align: center; }
+        .steps { display: flex; flex-direction: column; gap: 14px; margin-top: 15px; }
+        .step-item { display: flex; gap: 12px; align-items: flex-start; }
+        .step-num { width: 28px; height: 28px; background: var(--neon-cyan); color: #070b19; font-weight: 800; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 13px; }
+        .step-content h3 { font-size: 15px; margin-bottom: 3px; color: #fff; }
+        .step-content p { font-size: 13px; color: var(--text-sub); line-height: 1.4; }
+        .btn-link { display: inline-block; background: linear-gradient(135deg, var(--neon-cyan), #0077ff); color: #070b19; font-weight: 700; padding: 10px 20px; border-radius: 8px; text-decoration: none; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <div style="font-size: 40px; margin-bottom: 10px;">📲</div>
+            <h1>CyberShield AI • Mobile App Installation</h1>
+            <p>Connect your smartphone to the Laptop Cyber SOC over Wi-Fi / Hotspot</p>
+        </div>
+
+        <div class="card qr-section">
+            <h2 style="font-size: 18px; color: var(--neon-cyan);">Scan with Your Phone Camera</h2>
+            <p style="font-size: 13px; color: var(--text-sub); margin-top: 4px;">Make sure your phone is connected to the same Wi-Fi / Hotspot as this laptop.</p>
+            
+            <div class="qr-box">
+                <img id="qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=http://10.247.156.117:8000/mobile" alt="Mobile Pairing QR Code" width="200" height="200">
+            </div>
+
+            <p style="font-size: 12px; color: var(--text-sub);">Or open this URL in your mobile browser (Chrome / Safari):</p>
+            <div id="direct-url" class="url-box">http://10.247.156.117:8000/mobile</div>
+            <a id="open-link" href="http://10.247.156.117:8000/mobile" target="_blank" class="btn-link">Test Mobile Web View in Browser</a>
+        </div>
+
+        <div class="card">
+            <h2 style="font-size: 17px; margin-bottom: 15px; color: var(--neon-green);">📱 1-Tap Home Screen Installation Guide</h2>
+            <div class="steps">
+                <div class="step-item">
+                    <div class="step-num">1</div>
+                    <div class="step-content">
+                        <h3>Connect to Local Network</h3>
+                        <p>Ensure your mobile phone is connected to the same Wi-Fi network or Laptop Mobile Hotspot.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">2</div>
+                    <div class="step-content">
+                        <h3>Open on Phone</h3>
+                        <p>Scan the QR code above or type the URL into <strong>Google Chrome</strong> (Android) or <strong>Safari</strong> (iOS).</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">3</div>
+                    <div class="step-content">
+                        <h3>Tap "Install App" or "Add to Home Screen"</h3>
+                        <p>
+                            • <strong>Android:</strong> Tap the install banner at the top of the page, or tap Chrome menu (⋮) -> <em>"Add to Home screen" / "Install App"</em>.<br>
+                            • <strong>iOS / iPhone:</strong> Tap the Share button at bottom -> <em>"Add to Home Screen"</em>.
+                        </p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">4</div>
+                    <div class="step-content">
+                        <h3>App Appears on Phone Home Screen</h3>
+                        <p>The CyberShield AI icon will now appear on your phone screen as an installed mobile application. All scans run in <strong>Normal Mode</strong> and stream threat events to your Laptop SOC live!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 style="font-size: 17px; margin-bottom: 10px; color: var(--neon-cyan);">📦 Native Android APK Compilation (Optional)</h2>
+            <p style="font-size: 13px; color: var(--text-sub); line-height: 1.5;">
+                For students or developers who want to compile a raw <code>.apk</code> binary package, the complete Capacitor/Android project template and Gradle configuration files are located inside the <code>android_project/</code> folder in this directory.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Fetch dynamic IP from laptop backend if available
+        fetch('/api/v1/network/info')
+            .then(res => res.json())
+            .then(data => {
+                if (data.mobile_url) {
+                    document.getElementById('direct-url').textContent = data.mobile_url;
+                    document.getElementById('open-link').href = data.mobile_url;
+                    document.getElementById('qr-img').src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(data.mobile_url)}`;
+                }
+            })
+            .catch(() => {});
+    </script>
+</body>
+</html>

@@ -1,0 +1,581 @@
+/* ==============================================================================
+   CyberShield AI • Mobile Privacy Guardian Stylesheet
+   Mobile-First, Responsive, Touch-Optimized Cyberpunk SOC Design
+   ============================================================================== */
+
+:root {
+    --bg-dark: #070b19;
+    --card-bg: rgba(14, 21, 44, 0.85);
+    --card-border: rgba(0, 240, 255, 0.18);
+    --card-border-glow: rgba(0, 240, 255, 0.4);
+    --neon-cyan: #00f0ff;
+    --neon-green: #00ffa3;
+    --neon-red: #ff3366;
+    --neon-amber: #ffb703;
+    --neon-purple: #9d4edd;
+    --text-primary: #f0f4fc;
+    --text-muted: #8898aa;
+    --nav-height: 65px;
+    --header-height: 60px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    padding-bottom: calc(var(--nav-height) + 20px);
+    overflow-x: hidden;
+    min-height: 100vh;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(0, 240, 255, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(157, 78, 221, 0.05) 0%, transparent 40%);
+}
+
+/* Mobile Header */
+.mobile-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(7, 11, 25, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--card-border);
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand-icon {
+    font-size: 24px;
+    filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.6));
+}
+
+.brand-titles h1 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: 0.5px;
+}
+
+.brand-titles p {
+    font-size: 11px;
+    color: var(--neon-cyan);
+    font-weight: 500;
+}
+
+.soc-link-pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(0, 255, 163, 0.1);
+    border: 1px solid rgba(0, 255, 163, 0.3);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--neon-green);
+    transition: all 0.3s ease;
+}
+
+.soc-link-pill.disconnected {
+    background: rgba(255, 51, 102, 0.1);
+    border-color: rgba(255, 51, 102, 0.3);
+    color: var(--neon-red);
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--neon-green);
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+}
+
+.soc-link-pill.disconnected .pulse-dot {
+    background: var(--neon-red);
+    animation: none;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(0, 255, 163, 0.7); }
+    70% { transform: scale(1.1); box-shadow: 0 0 0 6px rgba(0, 255, 163, 0); }
+    100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(0, 255, 163, 0); }
+}
+
+/* Container */
+.mobile-container {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 540px;
+    margin: 0 auto;
+}
+
+/* Install Banner */
+.install-banner {
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.12), rgba(157, 78, 221, 0.15));
+    border: 1px solid rgba(0, 240, 255, 0.3);
+    border-radius: 14px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.install-text h4 {
+    font-size: 13px;
+    color: var(--neon-cyan);
+    margin-bottom: 2px;
+}
+
+.install-text p {
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+.install-btn {
+    background: linear-gradient(135deg, var(--neon-cyan), #00a8ff);
+    color: #070b19;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+/* Privacy Score Card */
+.score-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 18px;
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.score-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--neon-cyan), var(--neon-green));
+}
+
+.score-circle {
+    position: relative;
+    width: 86px;
+    height: 86px;
+    flex-shrink: 0;
+}
+
+.score-circle svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.score-circle circle {
+    fill: none;
+    stroke-width: 7;
+}
+
+.circle-bg {
+    stroke: rgba(255, 255, 255, 0.08);
+}
+
+.circle-fill {
+    stroke: var(--neon-green);
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1s ease, stroke 0.5s ease;
+}
+
+.score-number {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+.score-details h3 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.score-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    background: rgba(0, 255, 163, 0.15);
+    color: var(--neon-green);
+    margin-bottom: 6px;
+}
+
+.score-stats {
+    display: flex;
+    gap: 12px;
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+.score-stats span strong {
+    color: var(--text-primary);
+}
+
+/* Section Header */
+.section-title {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--neon-cyan);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 4px;
+}
+
+/* Feature Tabs / Cards */
+.feature-view {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.feature-view.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.app-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 14px;
+}
+
+.app-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.app-title-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.app-icon {
+    font-size: 22px;
+}
+
+.app-title-group h3 {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.status-tag {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 12px;
+    background: rgba(0, 240, 255, 0.1);
+    color: var(--neon-cyan);
+    border: 1px solid rgba(0, 240, 255, 0.3);
+}
+
+/* Presets & Buttons */
+.preset-chips {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+    scrollbar-width: none;
+}
+
+.preset-chips::-webkit-scrollbar {
+    display: none;
+}
+
+.chip-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--text-primary);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.chip-btn:active {
+    transform: scale(0.96);
+    background: rgba(0, 240, 255, 0.2);
+    border-color: var(--neon-cyan);
+}
+
+/* Textareas & Inputs */
+.mobile-textarea {
+    width: 100%;
+    min-height: 80px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 10px;
+    color: var(--text-primary);
+    font-size: 13px;
+    resize: none;
+    margin-bottom: 12px;
+}
+
+.mobile-textarea:focus {
+    outline: none;
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+}
+
+/* Action Button */
+.primary-action-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #00f0ff, #0077ff);
+    color: #070b19;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 15px rgba(0, 240, 255, 0.3);
+}
+
+.primary-action-btn:active {
+    transform: scale(0.98);
+}
+
+/* Alert Verdict Card */
+.verdict-box {
+    margin-top: 14px;
+    border-radius: 12px;
+    padding: 14px;
+    background: rgba(0, 0, 0, 0.4);
+    border-left: 4px solid var(--neon-cyan);
+    display: none;
+}
+
+.verdict-box.critical {
+    border-left-color: var(--neon-red);
+    background: rgba(255, 51, 102, 0.08);
+}
+
+.verdict-box.safe {
+    border-left-color: var(--neon-green);
+    background: rgba(0, 255, 163, 0.08);
+}
+
+.verdict-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.verdict-title {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.verdict-severity {
+    font-size: 10px;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.verdict-severity.critical {
+    background: var(--neon-red);
+    color: #fff;
+}
+
+.verdict-severity.safe {
+    background: var(--neon-green);
+    color: #070b19;
+}
+
+.verdict-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.verdict-action {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 11px;
+    color: var(--text-primary);
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.sync-badge {
+    margin-top: 8px;
+    font-size: 10px;
+    color: var(--neon-green);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* QR Camera Scanner Simulator */
+.qr-scanner-box {
+    background: #000;
+    border-radius: 12px;
+    border: 2px dashed rgba(0, 240, 255, 0.4);
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+.qr-reticle {
+    width: 140px;
+    height: 140px;
+    border: 2px solid var(--neon-cyan);
+    margin: 0 auto;
+    position: relative;
+    border-radius: 10px;
+}
+
+.qr-scan-line {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+    animation: scanAnim 2s infinite ease-in-out;
+}
+
+@keyframes scanAnim {
+    0% { top: 0; }
+    50% { top: 100%; }
+    100% { top: 0; }
+}
+
+/* Device Telemetry Card */
+.telemetry-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.telemetry-item {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.telemetry-item label {
+    font-size: 10px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+.telemetry-item .value {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-top: 2px;
+}
+
+/* Bottom Navigation */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: var(--nav-height);
+    background: rgba(7, 11, 25, 0.95);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-top: 1px solid var(--card-border);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 100;
+    max-width: 540px;
+    margin: 0 auto;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: var(--text-muted);
+    font-size: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    background: none;
+    width: 20%;
+}
+
+.nav-item .icon {
+    font-size: 18px;
+    transition: transform 0.2s ease;
+}
+
+.nav-item.active {
+    color: var(--neon-cyan);
+}
+
+.nav-item.active .icon {
+    transform: translateY(-2px);
+    filter: drop-shadow(0 0 6px rgba(0, 240, 255, 0.7));
+}

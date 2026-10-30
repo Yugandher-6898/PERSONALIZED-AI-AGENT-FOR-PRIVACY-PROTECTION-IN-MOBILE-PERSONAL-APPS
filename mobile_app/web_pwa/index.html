@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CyberShield AI • Mobile Privacy Guardian</title>
+    <link rel="icon" type="image/x-icon" href="/mobile_static/icon.ico">
+    <link rel="manifest" href="/mobile_static/manifest.json">
+    <meta name="theme-color" content="#070b19">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/mobile_static/css/mobile.css">
+</head>
+<body>
+
+    <!-- Mobile Sticky Header -->
+    <header class="mobile-header">
+        <div class="brand-group">
+            <span class="brand-icon">🛡️</span>
+            <div class="brand-titles">
+                <h1>CyberShield AI</h1>
+                <p>Personal Privacy Guardian (Normal Mode)</p>
+            </div>
+        </div>
+        <div id="soc-link-pill" class="soc-link-pill">
+            <div class="pulse-dot"></div>
+            <span id="soc-link-text">LINKED TO LAPTOP SOC</span>
+        </div>
+    </header>
+
+    <!-- Main Mobile Content Area -->
+    <main class="mobile-container">
+
+        <!-- 1. Install App PWA Banner (If not yet installed) -->
+        <div id="install-banner" class="install-banner" style="display: none;">
+            <div class="install-text">
+                <h4>📲 Install CyberShield App on Phone</h4>
+                <p>Add to Home Screen for instant 1-tap background protection.</p>
+            </div>
+            <button id="install-pwa-btn" class="install-btn">Install</button>
+        </div>
+
+        <!-- 2. Device Privacy Score Card -->
+        <div class="score-card">
+            <div class="score-circle">
+                <svg viewBox="0 0 100 100">
+                    <circle class="circle-bg" cx="50" cy="50" r="42" />
+                    <circle id="score-circle-fill" class="circle-fill" cx="50" cy="50" r="42" />
+                </svg>
+                <div id="score-number" class="score-number">85%</div>
+            </div>
+            <div class="score-details">
+                <span class="score-badge">NORMAL MODE ACTIVE</span>
+                <h3>Mobile Defense Score</h3>
+                <div class="score-stats">
+                    <span>Threats Blocked: <strong id="stat-threats-count">0</strong></span>
+                    <span>Trackers: <strong>4 Blocked</strong></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- =======================================================
+             FEATURE VIEW 1: DASHBOARD / OVERVIEW
+             ======================================================= -->
+        <section id="view-dashboard" class="feature-view active">
+            <div class="section-title">📱 Device Protection Status</div>
+
+            <div class="app-card">
+                <div class="app-card-header">
+                    <div class="app-title-group">
+                        <span class="app-icon">⚡</span>
+                        <h3>Real-Time Telemetry Link</h3>
+                    </div>
+                    <span class="status-tag">ACTIVE SYNC</span>
+                </div>
+                <div class="telemetry-grid">
+                    <div class="telemetry-item">
+                        <label>Device Model</label>
+                        <div id="disp-dev-name" class="value">Samsung Galaxy / Pixel</div>
+                    </div>
+                    <div class="telemetry-item">
+                        <label>Battery Status</label>
+                        <div id="disp-battery" class="value">88%</div>
+                    </div>
+                    <div class="telemetry-item">
+                        <label>SOC Server Link</label>
+                        <div class="value" style="color: var(--neon-green);">Port 8000 (Live)</div>
+                    </div>
+                    <div class="telemetry-item">
+                        <label>Device ID</label>
+                        <div id="disp-dev-id" class="value" style="font-size: 11px;">mob-init</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-title">🛡️ Quick Channel Tests</div>
+            <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 8px;">
+                Select a channel below to simulate real-world mobile threats and view how CyberShield protects your device and alerts the Laptop SOC in real time:
+            </p>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <button onclick="document.querySelector('[data-target=view-whatsapp]').click()" class="chip-btn" style="padding: 12px; text-align: left; background: rgba(0, 240, 255, 0.08); border-color: rgba(0, 240, 255, 0.25);">
+                    <div style="font-size: 18px; margin-bottom: 4px;">💬</div>
+                    <strong>WhatsApp Scam</strong>
+                    <div style="font-size: 10px; color: var(--text-muted);">Phishing & OTP Stealers</div>
+                </button>
+                <button onclick="document.querySelector('[data-target=view-upi]').click()" class="chip-btn" style="padding: 12px; text-align: left; background: rgba(255, 183, 3, 0.08); border-color: rgba(255, 183, 3, 0.25);">
+                    <div style="font-size: 18px; margin-bottom: 4px;">💳</div>
+                    <strong>UPI QR Fraud</strong>
+                    <div style="font-size: 10px; color: var(--text-muted);">Deceptive Collect Traps</div>
+                </button>
+                <button onclick="document.querySelector('[data-target=view-apk]').click()" class="chip-btn" style="padding: 12px; text-align: left; background: rgba(255, 51, 102, 0.08); border-color: rgba(255, 51, 102, 0.25);">
+                    <div style="font-size: 18px; margin-bottom: 4px;">📦</div>
+                    <strong>APK Trojan</strong>
+                    <div style="font-size: 10px; color: var(--text-muted);">Dangerous Permissions</div>
+                </button>
+                <button onclick="document.querySelector('[data-target=view-clipboard]').click()" class="chip-btn" style="padding: 12px; text-align: left; background: rgba(157, 78, 221, 0.08); border-color: rgba(157, 78, 221, 0.25);">
+                    <div style="font-size: 18px; margin-bottom: 4px;">📋</div>
+                    <strong>Clipboard Guard</strong>
+                    <div style="font-size: 10px; color: var(--text-muted);">PII & Credential Leaks</div>
+                </button>
+            </div>
+        </section>
+
+        <!-- =======================================================
+             FEATURE VIEW 2: WHATSAPP / SMS PHISHING GUARD
+             ======================================================= -->
+        <section id="view-whatsapp" class="feature-view">
+            <div class="section-title">💬 WhatsApp & Message Phishing Guard</div>
+
+            <div class="app-card">
+                <div class="app-card-header">
+                    <div class="app-title-group">
+                        <span class="app-icon">🟢</span>
+                        <h3>Message Safety Interceptor</h3>
+                    </div>
+                    <span class="status-tag">HEURISTICS ON</span>
+                </div>
+
+                <div class="preset-chips">
+                    <button class="chip-btn wa-preset" data-sample="Dear Customer, your Electricity Power will be disconnected tonight at 9:30 PM due to unpaid bill. Immediately update KYC bill here: http://electricity-power-bill.online/pay">⚡ Electricity Bill Scam</button>
+                    <button class="chip-btn wa-preset" data-sample="Congratulations! You won ₹25,000 festive bonus gift voucher. Claim reward instantly: http://diwali-gift-reward.xyz/claim.php">⚡ Festive Gift Lottery</button>
+                    <button class="chip-btn wa-preset" data-sample="Earn ₹3,000 daily from home! Part-time simple video liking job. Contact HR on Telegram: https://t.me/parttime_earning_now">⚡ Telegram Job Fraud</button>
+                    <button class="chip-btn wa-preset" data-sample="Hi Priya, are we meeting at the college library at 4 PM for project discussion? Let me know!">⚡ Normal Clean Chat</button>
+                </div>
+
+                <textarea id="wa-input" class="mobile-textarea" placeholder="Paste or type suspicious WhatsApp message or SMS text here..."></textarea>
+
+                <button id="wa-scan-btn" class="primary-action-btn">
+                    <span>🛡️</span> Run AI Privacy & Phishing Scan
+                </button>
+
+                <!-- Verdict Box -->
+                <div id="wa-verdict" class="verdict-box">
+                    <div class="verdict-header">
+                        <span id="wa-verdict-title" class="verdict-title">Analysis Verdict</span>
+                        <span id="wa-verdict-sev" class="verdict-severity">RISK</span>
+                    </div>
+                    <p id="wa-verdict-desc" class="verdict-desc">Results will appear here.</p>
+                    <div id="wa-verdict-action" class="verdict-action">Recommended action</div>
+                    <div class="sync-badge">📡 Telemetry synchronized to Laptop SOC in real-time</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =======================================================
+             FEATURE VIEW 3: UPI QR CODE FRAUD DETECTOR
+             ======================================================= -->
+        <section id="view-upi" class="feature-view">
+            <div class="section-title">💳 UPI QR Payment Fraud Guard</div>
+
+            <div class="app-card">
+                <div class="app-card-header">
+                    <div class="app-title-group">
+                        <span class="app-icon">📱</span>
+                        <h3>Camera QR & Payment Trap Inspector</h3>
+                    </div>
+                    <span class="status-tag">NPCI RULES</span>
+                </div>
+
+                <!-- QR Reticle Viewfinder Simulator -->
+                <div class="qr-scanner-box">
+                    <div class="qr-reticle">
+                        <div class="qr-scan-line"></div>
+                        <div style="font-size: 36px; line-height: 140px;">📷</div>
+                    </div>
+                    <p style="font-size: 11px; color: var(--text-muted); margin-top: 8px;">Simulating camera optical viewfinder for QR intent verification</p>
+                </div>
+
+                <div class="preset-chips">
+                    <button class="chip-btn upi-preset" data-sample="upi://pay?pa=refund-cashback@ybl&pn=Govt%20Cashback%20Reward&am=2499.00&mode=02&purpose=00">⚡ Deceptive "Receive Cashback" Trap</button>
+                    <button class="chip-btn upi-preset" data-sample="upi://pay?pa=fake-olx-buyer@paytm&pn=Army%20Officer%20Buyer&am=15000.00">⚡ OLX Army Officer Scam</button>
+                    <button class="chip-btn upi-preset" data-sample="upi://pay?pa=starbucks@hdfcbank&pn=Starbucks%20Coffee&am=350.00">⚡ Genuine Merchant Payment</button>
+                </div>
+
+                <textarea id="upi-input" class="mobile-textarea" placeholder="Paste decoded UPI string (upi://pay?pa=...)..."></textarea>
+
+                <button id="upi-scan-btn" class="primary-action-btn" style="background: linear-gradient(135deg, #ffb703, #fb8500);">
+                    <span>🔍</span> Verify UPI QR Intent & VPA Legitimacy
+                </button>
+
+                <!-- Verdict Box -->
+                <div id="upi-verdict" class="verdict-box">
+                    <div class="verdict-header">
+                        <span id="upi-verdict-title" class="verdict-title">UPI Verdict</span>
+                        <span id="upi-verdict-sev" class="verdict-severity">RISK</span>
+                    </div>
+                    <p id="upi-verdict-desc" class="verdict-desc">Results will appear here.</p>
+                    <div id="upi-verdict-action" class="verdict-action">Recommended action</div>
+                    <div class="sync-badge">📡 Telemetry synchronized to Laptop SOC in real-time</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =======================================================
+             FEATURE VIEW 4: APK & APP PERMISSIONS INSPECTOR
+             ======================================================= -->
+        <section id="view-apk" class="feature-view">
+            <div class="section-title">📦 APK Malware & Permissions Inspector</div>
+
+            <div class="app-card">
+                <div class="app-card-header">
+                    <div class="app-title-group">
+                        <span class="app-icon">🤖</span>
+                        <h3>Android Package Auditor</h3>
+                    </div>
+                    <span class="status-tag">STATIC GATES</span>
+                </div>
+
+                <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">
+                    Select an APK sample to audit dangerous permissions and spyware dropper payloads:
+                </p>
+
+                <div class="preset-chips">
+                    <button class="chip-btn apk-preset" data-name="WhatsApp_Gold_v9.apk" data-malware="true">⚡ WhatsApp_Gold_v9.apk (Spyware)</button>
+                    <button class="chip-btn apk-preset" data-name="Free_Netflix_Mod.apk" data-malware="true">⚡ Free_Netflix_Mod.apk (Trojan)</button>
+                    <button class="chip-btn apk-preset" data-name="Official_DigiLocker.apk" data-malware="false">⚡ Official_DigiLocker.apk (Clean)</button>
+                </div>
+
+                <div style="background: rgba(0,0,0,0.3); border-radius: 10px; padding: 12px; margin-bottom: 12px; border: 1px dashed rgba(255,255,255,0.15); text-align: center;">
+                    <div style="font-size: 24px; margin-bottom: 4px;">📂</div>
+                    <strong id="apk-file-name" style="font-size: 13px; color: var(--neon-cyan);">Select an APK package above</strong>
+                </div>
+
+                <!-- Verdict Box -->
+                <div id="apk-verdict" class="verdict-box">
+                    <div class="verdict-header">
+                        <span id="apk-verdict-title" class="verdict-title">APK Verdict</span>
+                        <span id="apk-verdict-sev" class="verdict-severity">RISK</span>
+                    </div>
+                    <p id="apk-verdict-desc" class="verdict-desc">Results will appear here.</p>
+                    <div id="apk-verdict-action" class="verdict-action">Recommended action</div>
+                    <div class="sync-badge">📡 Telemetry synchronized to Laptop SOC in real-time</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =======================================================
+             FEATURE VIEW 5: LIVE CLIPBOARD PII GUARD
+             ======================================================= -->
+        <section id="view-clipboard" class="feature-view">
+            <div class="section-title">📋 Live Clipboard PII Guard</div>
+
+            <div class="app-card">
+                <div class="app-card-header">
+                    <div class="app-title-group">
+                        <span class="app-icon">🔒</span>
+                        <h3>Clipboard Leak Shield</h3>
+                    </div>
+                    <span class="status-tag">BUFFER SCRUB</span>
+                </div>
+
+                <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">
+                    Test clipboard monitoring against sensitive identifiers (Credit Card, Aadhaar, PAN):
+                </p>
+
+                <div class="preset-chips">
+                    <button class="chip-btn clip-preset" data-val="4532-8921-0021-9943" data-type="credit card">⚡ Copy Credit Card Number</button>
+                    <button class="chip-btn clip-preset" data-val="8472-1928-3841" data-type="aadhaar">⚡ Copy Aadhaar Number</button>
+                    <button class="chip-btn clip-preset" data-val="ABCDE1234F" data-type="pan card">⚡ Copy PAN Card Number</button>
+                    <button class="chip-btn clip-preset" data-val="Meeting notes for tomorrow at 10 AM" data-type="clean">⚡ Copy Regular Note</button>
+                </div>
+
+                <input type="text" id="clip-input" class="mobile-textarea" style="min-height: 44px;" placeholder="Simulated clipboard buffer content...">
+
+                <!-- Verdict Box -->
+                <div id="clip-verdict" class="verdict-box">
+                    <div class="verdict-header">
+                        <span id="clip-verdict-title" class="verdict-title">Clipboard Verdict</span>
+                        <span id="clip-verdict-sev" class="verdict-severity">RISK</span>
+                    </div>
+                    <p id="clip-verdict-desc" class="verdict-desc">Results will appear here.</p>
+                    <div id="clip-verdict-action" class="verdict-action">Recommended action</div>
+                    <div class="sync-badge">📡 Telemetry synchronized to Laptop SOC in real-time</div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Bottom Navigation Bar (Normal Mode Navigation) -->
+    <nav class="bottom-nav">
+        <button class="nav-item active" data-target="view-dashboard">
+            <span class="icon">🛡️</span>
+            <span>Shield</span>
+        </button>
+        <button class="nav-item" data-target="view-whatsapp">
+            <span class="icon">💬</span>
+            <span>Messages</span>
+        </button>
+        <button class="nav-item" data-target="view-upi">
+            <span class="icon">💳</span>
+            <span>UPI Guard</span>
+        </button>
+        <button class="nav-item" data-target="view-apk">
+            <span class="icon">📦</span>
+            <span>APK Scan</span>
+        </button>
+        <button class="nav-item" data-target="view-clipboard">
+            <span class="icon">📋</span>
+            <span>Clipboard</span>
+        </button>
+    </nav>
+
+    <script src="/mobile_static/js/mobile_agent.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+2026-10-21 22:40:47,832 [INFO] Started server process [3796]
+2026-10-21 22:40:47,832 [INFO] Waiting for application startup.
+2026-10-21 22:40:47,863 [ERROR] Traceback (most recent call last):
+  File "C:\Users\gadup\AppData\Local\Programs\Python\Python314\Lib\site-packages\starlette\routing.py", line 648, in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+               ~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\gadup\AppData\Local\Programs\Python\Python314\Lib\site-packages\fastapi\routing.py", line 265, in __aenter__
+    await self._router._startup()
+  File "C:\Users\gadup\AppData\Local\Programs\Python\Python314\Lib\site-packages\fastapi\routing.py", line 6377, in _startup
+    handler()
+    ~~~~~~~^^
+  File "C:\Users\gadup\Desktop\2.1 ADD\AI GEN\laptop_desktop_app\backend\app.py", line 149, in startup_event
+    seed_data.populate_sample_data()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\gadup\Desktop\2.1 ADD\AI GEN\laptop_desktop_app\backend\seed_data.py", line 46, in populate_sample_data
+    database.insert_threat_event(sample1["event_data"], sample1["forensics_data"])
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: insert_threat_event() missing 2 required positional arguments: 'severity' and 'threat_type'
+
+2026-10-21 22:40:47,863 [ERROR] Application startup failed. Exiting.
+2026-10-21 22:58:11,800 [INFO] Started server process [25724]
+2026-10-21 22:58:11,800 [INFO] Waiting for application startup.
+[+] Seed data initialized successfully with realistic cybersecurity baselines.
+2026-10-21 22:58:11,887 [INFO] Application startup complete.
+2026-10-21 22:58:11,887 [INFO] Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+2026-10-21 22:58:14,229 [INFO] 127.0.0.1:52221 - "GET /api/v1/network/info HTTP/1.1" 200
+2026-10-21 22:58:14,306 [INFO] 127.0.0.1:52221 - "GET /api/v1/stats HTTP/1.1" 200
+2026-10-21 22:59:52,080 [INFO] Started server process [19876]
+2026-10-21 22:59:52,080 [INFO] Waiting for application startup.
+[+] Seed data initialized successfully with realistic cybersecurity baselines.
+2026-10-21 22:59:52,157 [INFO] Application startup complete.
+2026-10-21 22:59:52,158 [INFO] Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+2026-10-21 22:59:54,729 [INFO] 127.0.0.1:60862 - "GET / HTTP/1.1" 200
+2026-10-21 22:59:54,769 [INFO] 127.0.0.1:60863 - "GET / HTTP/1.1" 200
+2026-10-21 22:59:54,778 [INFO] 127.0.0.1:60862 - "GET /mobile HTTP/1.1" 200
+2026-10-21 22:59:54,789 [INFO] 127.0.0.1:60863 - "GET /mobile HTTP/1.1" 200
+2026-10-21 22:59:54,794 [INFO] 127.0.0.1:60862 - "GET /api/v1/devices HTTP/1.1" 200
+2026-10-21 22:59:54,803 [INFO] 127.0.0.1:60863 - "GET /api/v1/devices HTTP/1.1" 200
+2026-10-21 22:59:54,808 [INFO] 127.0.0.1:60862 - "GET /api/v1/threats HTTP/1.1" 200
+2026-10-21 22:59:54,818 [INFO] 127.0.0.1:60863 - "GET /api/v1/threats HTTP/1.1" 200
+2026-10-21 22:59:54,823 [INFO] 127.0.0.1:60862 - "GET /api/v1/trackers HTTP/1.1" 200
+2026-10-21 22:59:54,833 [INFO] 127.0.0.1:60863 - "GET /api/v1/trackers HTTP/1.1" 200
+2026-10-21 22:59:54,839 [INFO] 127.0.0.1:60862 - "GET /api/v1/cve HTTP/1.1" 200
+2026-10-21 22:59:54,847 [INFO] 127.0.0.1:60863 - "GET /api/v1/cve HTTP/1.1" 200
+2026-10-21 22:59:54,852 [INFO] 127.0.0.1:60862 - "GET /api/v1/profile HTTP/1.1" 200
+2026-10-21 22:59:54,862 [INFO] 127.0.0.1:60863 - "GET /api/v1/profile HTTP/1.1" 200
+2026-10-21 23:03:45,887 [INFO] Started server process [13924]
+2026-10-21 23:03:45,887 [INFO] Waiting for application startup.
+[+] Seed data initialized successfully with realistic cybersecurity baselines.
+2026-10-21 23:03:45,942 [INFO] Application startup complete.
+2026-10-21 23:03:45,943 [INFO] Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+2026-10-21 23:03:45,990 [INFO] 127.0.0.1:51501 - "GET /api/v1/stats HTTP/1.1" 200
+2026-10-21 23:03:46,641 [INFO] 127.0.0.1:51575 - "GET / HTTP/1.1" 200
+2026-10-21 23:03:46,656 [INFO] 127.0.0.1:64681 - "GET /desktop_ui/static/css/style.css HTTP/1.1" 404
+2026-10-21 23:03:46,659 [INFO] 127.0.0.1:51575 - "GET /static/css/style.css HTTP/1.1" 200
+2026-10-21 23:03:46,660 [INFO] 127.0.0.1:57002 - "GET /desktop_ui/static/js/app.js HTTP/1.1" 404
+2026-10-21 23:03:46,662 [INFO] 127.0.0.1:59194 - "GET /static/js/app.js HTTP/1.1" 200
+2026-10-21 23:03:46,860 [INFO] 127.0.0.1:52423 - "GET /static/icon.ico HTTP/1.1" 200
